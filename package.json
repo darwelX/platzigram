@@ -1,0 +1,32 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "Comparte tus fotos estudiando en platzi con el resto de la comunidad",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darwelX/platzigram.git"
+  },
+  "keywords": [
+    "platzi",
+    "javascript",
+    "curso-definitivo",
+    "platzigram"
+  ],
+  "author": "Darwel Quintero <darwel34@gmail.com> (https://twiter.com/darwelX)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/darwelX/platzigram/issues"
+  },
+  "homepage": "https://github.com/darwelX/platzigram#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "materialize-css": "^0.99.0",
+    "pug": "^2.0.0-rc.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0"
+  }
+}
