@@ -10,5 +10,25 @@ var title = require('title');
 page('/', function(ctx, next){
   title('Platzigram');
   var main = document.getElementById('main-container');
-  empty(main).appendChild(template);
+  var pictures = [
+    {
+      user: {
+        username: 'darwelX',
+        avatar: 'https://pickaface.net/assets/images/slides/slide2.png'
+      },
+      url: 'http://materializecss.com/images/office.jpg',
+      likes: 340,
+      liked: true
+    },
+    {
+      user: {
+        username: 'darwelX',
+        avatar: 'https://pickaface.net/assets/images/slides/slide2.png'
+      },
+      url: 'http://materializecss.com/images/office.jpg',
+      likes: 340,
+      liked: true
+    }    
+  ];
+  empty(main).appendChild(template(pictures));
 });
