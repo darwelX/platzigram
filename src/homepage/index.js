@@ -18,7 +18,8 @@ page('/', function(ctx, next){
       },
       url: 'http://materializecss.com/images/office.jpg',
       likes: 340,
-      liked: true
+      liked: false,
+      createdAt: new Date()
     },
     {
       user: {
@@ -27,7 +28,8 @@ page('/', function(ctx, next){
       },
       url: 'http://materializecss.com/images/office.jpg',
       likes: 340,
-      liked: true
+      liked: false,
+      createdAt: new Date().setDate(new Date().getDate() - 10)
     }    
   ];
   empty(main).appendChild(template(pictures));
