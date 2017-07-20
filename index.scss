@@ -98,6 +98,18 @@ $avatar_size: 48px;
   color: $secondary-color;
 }
 
+.card .fa-heart {
+  color: red;
+  display: none;
+}
+.card.liked{
+  .fa-heart{
+    display: block;
+  }
+  .fa-heart-o{
+    display: none;
+  }
+}
 .card .username {
   color: $secondary-color;
 }
