@@ -20,12 +20,17 @@
   },
   "homepage": "https://github.com/darwelX/platzigram#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "empty-element": "^1.0.0",
     "express": "^4.15.3",
+    "intl": "^1.2.5",
+    "intl-messageformat": "^2.0.0",
+    "intl-relativeformat": "^2.0.0",
     "materialize-css": "^0.99.0",
     "moment": "^2.18.1",
     "page": "^1.7.1",
     "pug": "^2.0.0-rc.2",
+    "superagent": "^3.5.2",
     "title": "^1.0.0",
     "yo-yo": "^1.4.1"
   },
