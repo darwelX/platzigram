@@ -15,7 +15,7 @@ var axios = require('axios');
  * para realizar diferentes tareas entre ellas estan
  * crear el header y cargar las fotografias.
  */
-page('/', header, loadPictures,function(ctx, next){
+page('/', header, loadPictures, function(ctx, next){
   title('Platzigram');
   var main = document.getElementById('main-container');
   empty(main).appendChild(template(ctx.pictures));
@@ -56,4 +56,18 @@ function loadPicturesAxios(ctx, next){
     .catch(function(err){
       console.log(err);
     });
+}
+
+function loadPicturesFetch(ctx, next){
+  fetch('/api/pictures')
+    .then(function(res){
+      return res.json();
+    })
+    .then(function(res){
+      ctx.pictures = res;
+      next();
+    })
+    .catch(function(err){
+      console.log(err);
+    })
 }
