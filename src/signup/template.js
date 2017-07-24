@@ -1,5 +1,6 @@
 var yo = require('yo-yo');
 var landing = require('../landing');
+var translate = require('../translate');
 
 var signupForm = yo`
         <div class="col s12 m7">
@@ -7,18 +8,18 @@ var signupForm = yo`
             <div class="signup-box">
               <h1 class="platzigram">Platzigram</h1>
               <form class="signup-form">
-                <h2>Regístrate para ver fotos de tus amigos estudiando en Platzi</h2>
+                <h2>${translate.message('signup.subheading')}</h2>
                 <div class="section">
-                  <a href="" class="btn btn-fb hide-on-small-only"><i class="fa fa-facebook-official"></i>Iniciar sesión con Facebook</a>
-                  <a href="" class="btn btn-fb hide-on-med-and-up">Iniciar sesión</a>
+                  <a href="" class="btn btn-fb hide-on-small-only"><i class="fa fa-facebook-official"></i>${translate.message('signup.facebook')}</a>
+                  <a href="" class="btn btn-fb hide-on-med-and-up">${translate.message('signup')}</a>
                 </div>
                 <div class="divider"></div>
                 <div class="section">
-                  <input type="email" name="email" placeholder="Correo electrónico"/>
-                  <input type="text" name="nombre" placeholder="Nombre completo"/>
-                  <input type="text" name="user_name" placeholder="Nombre de usuario"/>
-                  <input type="password" name="password" placeholder="Contraseña"/>
-                  <button class="btn waves-effect waves-light btn-signup" type="submit">Regístrate</button>
+                  <input type="email" name="email" placeholder="${translate.message('email')}"/>
+                  <input type="text" name="nombre" placeholder="${translate.message('username')}"/>
+                  <input type="text" name="user_name" placeholder="${translate.message('fullname')}"/>
+                  <input type="password" name="password" placeholder="${translate.message('password')}"/>
+                  <button class="btn waves-effect waves-light btn-signup" type="submit">${translate.message('signup.call-to-action')}</button>
                 </div>
               </form>
             </div>
@@ -26,7 +27,7 @@ var signupForm = yo`
 
           <div class="row">
             <div class="login-box">
-              ¿Tienes una cuenta? <a href="/signin">Entrar</a>
+              ${translate.message('signup.have-account')} <a href="/signin">${translate.message('signin')}</a>
             </div>
           </div>
         </div>`;
