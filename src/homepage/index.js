@@ -51,6 +51,7 @@ function loadPicturesAxios(ctx, next){
     .get('/api/pictures')
     .then(function (response){
       ctx.pictures = response.data;
+      next();
     })
     .catch(function(err){
       console.log(err);
