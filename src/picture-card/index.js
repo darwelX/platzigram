@@ -1,6 +1,9 @@
 var yo = require('yo-yo');
 var moment = require('moment');
-
+var translate = require('../translate');
+var rf = new IntlRelativeFormat('es');
+// var rf = new IntlRelativeFormat('en-US'); para mostrar textos en ingles
+//  moment(picture.createdAt).fromNow() esta linea se utiliza para traducir fechas a fechas relativas pero en lugar de usar moment se usara intl-relativeformat
 module.exports = function pictureCard(pic){
   var el;
 
@@ -14,11 +17,11 @@ module.exports = function pictureCard(pic){
           <img src="${picture.user.avatar}" class="avatar"/>
           <span class="username">${picture.user.username}</span>
         </a>
-        <small class="right time">${moment(picture.createdAt).fromNow()}</small>
+        <small class="right time">${translate.date.format(picture.createdAt)}</small>
         <p>
           <a class="left" href="#" onclick=${like.bind(null, true)}><i class="fa fa-heart-o"></i></a>
           <a class="left" href="#" onclick=${like.bind(null, false)}><i class="fa fa-heart"></i></a>
-          <span class="left likes">${picture.likes} me gusta</span>
+          <span class="left likes">${translate.message('likes', { likes: picture.likes})}</span>
         </p>
       </div>
     </div>`;
