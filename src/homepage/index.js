@@ -6,31 +6,53 @@ var empty = require('empty-element');
 // contiene el template html de la pagina
 var template = require('./template');
 var title = require('title');
+var request = require('superagent');
+var header = require('../header');
+var axios = require('axios');
 
-page('/', function(ctx, next){
+/**
+ * En esta ruta se utilizaron varias funciones Middleware
+ * para realizar diferentes tareas entre ellas estan
+ * crear el header y cargar las fotografias.
+ */
+page('/', header, loadPictures,function(ctx, next){
   title('Platzigram');
   var main = document.getElementById('main-container');
-  var pictures = [
-    {
-      user: {
-        username: 'darwelX',
-        avatar: 'https://pickaface.net/assets/images/slides/slide2.png'
-      },
-      url: 'http://materializecss.com/images/office.jpg',
-      likes: 340,
-      liked: false,
-      createdAt: new Date()
-    },
-    {
-      user: {
-        username: 'darwelX',
-        avatar: 'https://pickaface.net/assets/images/slides/slide2.png'
-      },
-      url: 'http://materializecss.com/images/office.jpg',
-      likes: 340,
-      liked: false,
-      createdAt: new Date().setDate(new Date().getDate() - 10)
-    }    
-  ];
-  empty(main).appendChild(template(pictures));
+  empty(main).appendChild(template(ctx.pictures));
 });
+
+/**
+ * Esta es una funcion Middleware que se crean para 
+ * ejecutar cierto codigo y luego llamar a la siguiente
+ * funcion middleware con la instruccion next()
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+function loadPictures(ctx, next){
+  request
+    .get('/api/pictures')
+    .end(function (err, res){
+      if (err) return console.log(err);
+
+      ctx.pictures = res.body;
+      next();
+    })
+}
+
+/**
+ * Esta funcion se puede utilizar en lugar de loadPictures
+ * la diferencia radica en que se utiliza la libreria axion
+ * que usa promesas en lugar de callbacks
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+function loadPicturesAxios(ctx, next){
+  axios
+    .get('/api/pictures')
+    .then(function (response){
+      ctx.pictures = response.data;
+    })
+    .catch(function(err){
+      console.log(err);
+    });
+}
