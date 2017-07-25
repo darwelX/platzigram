@@ -71,3 +71,12 @@ function loadPicturesFetch(ctx, next){
       console.log(err);
     })
 }
+
+async function asyncLoad(ctx, next){
+  try{
+    ctx.pictures = await fetch('/api/pictures').then( res => res.json());
+    next();
+  }catch(err){
+    return console.log(err);
+  }
+}
