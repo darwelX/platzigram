@@ -1,3 +1,4 @@
+require("babel-polyfill");
 // utilizada para el manejo de rutas
 var page = require('page');
 require('moment/locale/es');
