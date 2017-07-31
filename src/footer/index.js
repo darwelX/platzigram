@@ -12,7 +12,7 @@ var el = yo`  <footer class="site-footer">
           </ul>
         </div>
         <div class="col s12 l3 push-l6 center-align">
-          &copy;2017 Platzigram
+          ©2017 Platzigram
         </div>
       </div>
     </div>
