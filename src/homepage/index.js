@@ -9,13 +9,15 @@ var title = require('title');
 var request = require('superagent');
 var header = require('../header');
 var axios = require('axios');
+var spiner = require('../spiner');
+
 
 /**
  * En esta ruta se utilizaron varias funciones Middleware
  * para realizar diferentes tareas entre ellas estan
  * crear el header y cargar las fotografias.
  */
-page('/', header, loadPictures, function(ctx, next){
+page('/', header, spiner, loadPictures, function(ctx, next){
   title('Platzigram');
   var main = document.getElementById('main-container');
   empty(main).appendChild(template(ctx.pictures));
