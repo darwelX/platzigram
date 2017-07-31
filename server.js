@@ -61,6 +61,50 @@ app.post('/api/pictures', function(req, res){
     res.send('File uploaded');
   });
 });
+app.get('/api/user/:username', function(req, res){
+  const user = {
+    username: 'darwelX',
+    avatar: 'https://pickaface.net/assets/images/slides/slide2.png',
+    pictures: [
+      {
+        id: 1,
+        src: 'http://www.khamliatour.com/wp-content/uploads/2017/03/estudiantes-marruecos-2017-1024x682.jpg',
+        likes: 3
+      },
+      {
+        id: 2,
+        src: 'http://elvenezolanonews.com/wp-content/uploads/2017/07/estudiantes.jpg',
+        likes: 30
+      },
+      {
+        id: 3,
+        src: 'http://www.residenciasantandreu.com/wp-content/uploads/2014/06/residencia_estudiantes_granada.jpg',
+        likes: 14
+      },
+      {
+        id: 4,
+        src: 'http://elvenezolanonews.com/wp-content/uploads/2017/07/estudiantes.jpg',
+        likes: 22
+      },
+      {
+        id: 5,
+        src: 'http://www.primicias24.com/wp-content/uploads/2016/09/becas-para-estudiantes-en-el-extranjero.jpg',
+        likes: 6
+      },
+      {
+        id: 6,
+        src: 'http://www.malaga2013.cgcoo.es/uploads/images/7723840-gran-grupo-de-estudiantes-sonrientes-aislados-sobre-fondo-blanco.jpg',
+        likes: 8
+      }
+
+    ]
+  }
+
+  res.send(user);
+});
+app.get('/:username', function(req, res){
+  res.render('index', {title: `Platzigram - ${req.params.username}`});
+});
 app.listen(3000, function(err){
   if(err){
     console.log('Hubo un error'), process.exit(1);
