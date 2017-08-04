@@ -262,3 +262,23 @@ $avatar_size: 48px;
     height: 5em;
   }
 }
+
+.modal{
+  img{
+    max-width: 90%;
+    max-height: 100%;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .fa-heart{
+    display: inline-block;
+    color: red;
+  }
+
+  .chevron{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+  }
+}
