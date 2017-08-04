@@ -1,6 +1,7 @@
 import yo from 'yo-yo';
 import layout from '../layout';
 import translate from '../translate';
+import empty from 'empty-element';
 
 export default function userPageTemplate(user){
   var el = yo`
@@ -32,7 +33,7 @@ export default function userPageTemplate(user){
             <a href="#" onclick=${next.bind(null, index, arreglo)}><i class="chevron fa fa-chevron-right fa-4x"></i></a>
           </div>
           <div class="modal-footer">
-            <div class="likes">
+            <div class="likes" id="likes${index}">
               <i class="fa fa-heart"></i> ${translate.message('likes', { likes: picture.likes})}
             </div>
           </div>
@@ -47,6 +48,7 @@ export default function userPageTemplate(user){
     currentIndex = currentIndex == undefined ? index : currentIndex;
     currentPos = currentPos == undefined ? index : currentPos;    
     var img = document.getElementById(`image${index}`);
+    var likes = document.getElementById(`likes${index}`);
     var size = array.length;
     var pos;
     if (currentPos === (size - 1) ){
@@ -56,6 +58,11 @@ export default function userPageTemplate(user){
       currentPos++;
       pos = currentPos;
     }
+    var lk = document.createElement("i");
+    lk.className = 'fa fa-heart';
+    empty(likes);
+    likes.appendChild(lk);
+    likes.insertAdjacentHTML('beforeend',` ${translate.message('likes', { likes: array[pos].likes})}`);
     img.src = array[pos].src;
     return false;
   }
@@ -64,6 +71,7 @@ export default function userPageTemplate(user){
     currentIndex = currentIndex == undefined ? index : currentIndex;
     currentPos = currentPos == undefined ? index : currentPos;    
     var img = document.getElementById(`image${index}`);
+    var likes = document.getElementById(`likes${index}`);
     var size = array.length;
     var pos;
     if (currentPos == 0 ){
@@ -73,6 +81,11 @@ export default function userPageTemplate(user){
       currentPos--;
       pos = currentPos;
     }
+    var lk = document.createElement("i");
+    lk.className = 'fa fa-heart';
+    empty(likes);
+    likes.appendChild(lk);
+    likes.insertAdjacentHTML('beforeend',` ${translate.message('likes', { likes: array[pos].likes})}`);    
     img.src = array[pos].src;    
     return false;
   }
