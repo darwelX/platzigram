@@ -10,7 +10,8 @@ module.exports = function pictureCard(pic){
   function render(picture){
       return yo`<div class="card ${picture.liked ? 'liked':''}">
       <div class="card-image">
-        <img class="activator" src="${picture.url}">
+        <img class="activator" src="${picture.url}" ondblclick=${like.bind(null, null, true)}/>
+        <i class="fa fa-heart like-heart ${picture.likedHeart ? 'liked' : ''}"></i>
       </div>
       <div class="card-content">
         <a href="/${picture.user.username}" class="card-title">
@@ -31,11 +32,27 @@ module.exports = function pictureCard(pic){
   // este llamado se realiza de esta forma ya que de la manera tradicional
   // la funcion se ejecutaria infinitamente, al usar bind nos retorna una referencia 
   // a la funcion pero con el parametro cambiado segun lo necesite
-  function like(liked){
-    pic.liked = liked;
+  function like(liked, dblclick){
+
+    if(dblclick){
+      pic.likedHeart = pic.liked = !pic.liked;
+      liked = pic.liked;
+    } else {
+      pic.liked  = liked;
+    }
     pic.likes += liked ? 1 : -1;
-    var newEl = render(pic);
-    yo.update(el, newEl);
+
+    function doRender(){
+      var newEl = render(pic);
+      yo.update(el, newEl);
+    }
+
+    doRender();
+
+    setTimeout(function(){
+      pic.likedHeart = false;
+      doRender();
+    }, 1500);
     return false;
   }
 
