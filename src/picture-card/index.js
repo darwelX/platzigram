@@ -8,7 +8,7 @@ module.exports = function pictureCard(pic){
   var el;
 
   function render(picture){
-      return yo`<div class="card ${picture.liked ? 'liked':''}">
+      return yo`<div class="card ${picture.liked ? 'liked':''}" id="picture-card">
       <div class="card-image">
         <img class="activator" src="${picture.url}" ondblclick=${like.bind(null, null, true)}/>
         <i class="fa fa-heart like-heart ${picture.likedHeart ? 'liked' : ''}"></i>
